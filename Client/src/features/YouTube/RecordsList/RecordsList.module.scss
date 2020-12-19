@@ -1,0 +1,16 @@
+.title {
+  font-size: 14px;
+}
+
+.addRecordWrapper {
+  display: flex;
+  align-items: flex-end;
+
+  .addRecordInputElement {
+    flex-grow: 1;
+  }
+
+  Button {
+    margin-left: 20px;
+  }
+}
