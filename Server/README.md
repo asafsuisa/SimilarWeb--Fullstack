@@ -15,7 +15,7 @@
 	- Will return **"addRecordResponse"** event - which contains data about the added record.
 	- Response example:
 	
-		-On success:
+-On success:
 ```
   {
     "success": true,
@@ -25,12 +25,14 @@
         "title": "record title",
         "duration": "PT3M20S"
   }
+  }
 ```
-		-On failure:
+-On failure:
+	
 ```
   {
     "success": false,
-	"error"" "error messgae"
+     "error": "error messgae"
   }
 ```	
 
@@ -39,7 +41,7 @@
 
 	- Will return **"getItemsResponse"** event which contains the already added records orderd by timestamp (asc).
 	- Response example:
-		- On success:
+- On success:
 ```
   {
     "success": true,
@@ -53,12 +55,15 @@
 		...
 	]
   }
-```		
-		-On failure:
+  }		
+```
+
+
+- On failure:
 ```
   {
     "success": false,
-	"error"" "error messgae"
+    "error": "error messgae"
   }
 ```	
 
