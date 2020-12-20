@@ -20,6 +20,7 @@ export function RecordsList() {
   const socketContext = useContext(SocketContext);
   const dispatch = useDispatch();
   const [recordInput, setRecordInput] = useState('');
+  const [addEventOnProgress, setaddEventOnProgress] = useState(false);
 
   useEffect(() => {
     socketContext.on('addRecordResponse', (resp) => {
@@ -31,6 +32,8 @@ export function RecordsList() {
           window.alert(resp.error);
         }
       }
+
+      setaddEventOnProgress(false);
     })
 
     socketContext.on('getItemsResponse', (resp) => {
@@ -53,7 +56,10 @@ export function RecordsList() {
   };
 
   const addRecordHandler = e => {
-    socketContext.emit('addRecord', recordInput);
+    if (!addEventOnProgress) {
+      socketContext.emit('addRecord', recordInput);
+      setaddEventOnProgress(true);
+    }
   };
 
   const formatDate = date => {
@@ -73,7 +79,7 @@ export function RecordsList() {
           onKeyUp={handleEnterPress}
           className={styles.addRecordInputElement}
         />
-        <Button variant="contained" onClick={addRecordHandler}>Add</Button>
+        <Button variant="contained" disabled={addEventOnProgress} onClick={addRecordHandler}>Add</Button>
       </div>
       <div className={styles.recordsListContainer}>
         <List className={styles.list}>

@@ -1,13 +1,11 @@
 import React, { useEffect } from 'react';
 import { RecordsList } from 'features/YouTube/RecordsList/RecordsList';
 import { YouTubePlayer } from 'features/YouTube/Player/YoutubePlayer';
-import socketIOClient from "socket.io-client";
-import { SocketContext } from 'utils/SocketContext';
+import { socket, SocketContext } from 'utils/SocketContext';
 import styles from './App.module.scss';
 
 function App() {
-  const ENDPOINT = process.env.REACT_APP_API;
-  let socket = socketIOClient(ENDPOINT);
+
   useEffect(() => {
     socket.on('connect', () => {
       socket.emit('getItems');
